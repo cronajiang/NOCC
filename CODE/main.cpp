@@ -6,7 +6,7 @@
 #include "borlfianium.h"
 #include <QThread>
 
-
+//CRONAJIANG ME DIJO
 
 int main(int argc, char *argv[])
 {
