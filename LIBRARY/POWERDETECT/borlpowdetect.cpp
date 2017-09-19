@@ -23,13 +23,13 @@ BORLPOWDETECT::BORLPOWDETECT()
  * OPTICAL SW USING SERIAL COMUNICATION
  */
 
-BORLPOWDETECT::SetCOMPort(QString portName)
+void BORLPOWDETECT::SetCOMPort(QString portName)
 {
     ComPort=portName;
     qDebug()<<ComPort;
 }
 
-BORLPOWDETECT::ReadWritePOW()
+void BORLPOWDETECT::ReadWritePOW()
 {
 
     QSerialPort serial;
@@ -50,7 +50,8 @@ BORLPOWDETECT::ReadWritePOW()
         QThread::msleep(200);
         serial.waitForReadyRead(1000);
         QByteArray data=serial.readAll();
-        qDebug()<<data;
+         qDebug()<<data;
+
     }
     else
      {
@@ -60,7 +61,7 @@ BORLPOWDETECT::ReadWritePOW()
 
 }
 
-BORLPOWDETECT::ObtainPOW()
+void BORLPOWDETECT::ObtainPOW()
 {
     ReadWritePOW();
 }

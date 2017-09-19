@@ -9,16 +9,16 @@ class BORLSW
 public:
 
     BORLSW();
-    SwType();
-    SwFirmware();
-    CurrentChannel();
-    SetChannel(qint8);
-    SetCOMPort(QString);
+    void SwType();
+    void SwFirmware();
+    void CurrentChannel();
+    void SetChannel(qint8);
+    void SetCOMPort(QString);
 
 private:
     qint8 ChannelNum;
-    ReadWriteSC(char[]);
-    WriteSC(char[]);
+    void ReadWriteSC(char[]);
+    void WriteSC(char[]);
     QString ComPort;
 };
 

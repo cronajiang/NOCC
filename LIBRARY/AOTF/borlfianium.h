@@ -7,11 +7,11 @@ class BORLFianium
 public:
 
     BORLFianium();
-    BORLFianiumCntrl();  //returns BORLFianiumConnect() values if iFunct setted to 0, else, returns -3 if DDS instructions are writen
-    BORLFianiumFunctn(int);
-    BORLFianiumChannel(int);
-    BORLFianiumWavelength(int);
-    BORLFianiumPower(float);
+    void BORLFianiumCntrl();  //returns BORLFianiumConnect() values if iFunct setted to 0, else, returns -3 if DDS instructions are writen
+    void BORLFianiumFunctn(int);
+    void BORLFianiumChannel(int);
+    void BORLFianiumWavelength(int);
+    void BORLFianiumPower(float);
 
     //   int counterDelayedLoop; //this is a member var
     //   QVector<float> frequenciesList;
@@ -29,13 +29,13 @@ private:
 
     float fWavelength;    //Crystal Frequency
     int iPowerlevel;  //14 bit resolution Power level
-    BORLFianiumConnect();  //returns int =0(Connected to instanse 0), int =-1(no conection established), int =-2(problem closing USB AOTF controller)
-    BORLFianiumPowerScale();  //Returns int = representing 14 bits resolution of power
-    BORLFianiumWlngtScale();  //Void fnctn, gives value to fWavelenght, which determines the frequency of the crystal
-    BORLFianiumSetWavelenght();
-    BORLFianiumSetPower();
+    void BORLFianiumConnect();  //returns int =0(Connected to instanse 0), int =-1(no conection established), int =-2(problem closing USB AOTF controller)
+    void BORLFianiumPowerScale();  //Returns int = representing 14 bits resolution of power
+    void BORLFianiumWlngtScale();  //Void fnctn, gives value to fWavelenght, which determines the frequency of the crystal
+    void BORLFianiumSetWavelenght();
+    void BORLFianiumSetPower();
 
-    float FreqTable[378*2] =
+    double FreqTable[378*2] =
     {
     916.300000000000,	61
     ,914.900000000000,	61.1000000000000

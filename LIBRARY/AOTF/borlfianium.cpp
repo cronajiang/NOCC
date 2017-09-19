@@ -2,7 +2,7 @@
 #include <string>
 #include <windows.h>
 #include <QDebug>
-#include "AotfLibrary.h"
+#include "..\NOCC-PRIVATE\AotfLibrary.h"
 #include "borlfianium.h"
 
 using namespace std;
@@ -12,28 +12,28 @@ BORLFianium::BORLFianium()
 
 }
 
-BORLFianium::BORLFianiumFunctn(int iFunct)
+void BORLFianium::BORLFianiumFunctn(int iFunct)
 {
  iFunctn=iFunct;
 }
 
-BORLFianium::BORLFianiumChannel(int iCh)
+void BORLFianium::BORLFianiumChannel(int iCh)
 {
  iChannel=iCh;
 }
 
-BORLFianium::BORLFianiumWavelength(int iWv)
+void BORLFianium::BORLFianiumWavelength(int iWv)
 {
  iWavelength=iWv;
 }
 
 
-BORLFianium::BORLFianiumPower(float fPow)
+void BORLFianium::BORLFianiumPower(float fPow)
 {
  fPowerlevel=fPow;
 }
 
-BORLFianium::BORLFianiumConnect()
+void BORLFianium::BORLFianiumConnect()
 {
     int iInstance = 0;
     HANDLE hAotfController = AotfOpen(iInstance);
@@ -56,7 +56,7 @@ BORLFianium::BORLFianiumConnect()
 }
 
 
-BORLFianium::BORLFianiumPowerScale()
+void BORLFianium::BORLFianiumPowerScale()
 {
     if((fPowerlevel<=100)&&(fPowerlevel>=0))
     {
@@ -71,7 +71,7 @@ BORLFianium::BORLFianiumPowerScale()
 }
 
 
-BORLFianium::BORLFianiumWlngtScale()
+void BORLFianium::BORLFianiumWlngtScale()
 {
     if((iWavelength>=600)&&(iWavelength<=900))
     {
@@ -98,7 +98,7 @@ BORLFianium::BORLFianiumWlngtScale()
 }
 
 
-BORLFianium::BORLFianiumSetWavelenght()
+void BORLFianium::BORLFianiumSetWavelenght()
 {
     int iInstance = 0;
     string StrComand="dds f " + to_string(iChannel) + " " + to_string(fWavelength) + "\r";
@@ -122,7 +122,7 @@ BORLFianium::BORLFianiumSetWavelenght()
 }
 
 
-BORLFianium::BORLFianiumSetPower()
+void BORLFianium::BORLFianiumSetPower()
 {
     int iInstance = 0;
     string StrComand="dds a " + to_string(iChannel) + " " + to_string(iPowerlevel) + "\r";
@@ -146,7 +146,7 @@ BORLFianium::BORLFianiumSetPower()
 }
 
 
-BORLFianium::BORLFianiumCntrl()
+void BORLFianium::BORLFianiumCntrl()
 {
     switch(iFunctn)
     {

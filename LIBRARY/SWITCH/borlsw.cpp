@@ -22,13 +22,13 @@ BORLSW::BORLSW()
  * OPTICAL SW USING SERIAL COMUNICATION
  */
 
-BORLSW::SetCOMPort(QString portName)
+void BORLSW::SetCOMPort(QString portName)
 {
     ComPort=portName;
     qDebug()<<ComPort;
 }
 
-BORLSW::ReadWriteSC(char cCommand[15])
+void BORLSW::ReadWriteSC(char cCommand[15])
 {
 
     QSerialPort serial;
@@ -52,7 +52,7 @@ BORLSW::ReadWriteSC(char cCommand[15])
 
 }
 
-BORLSW::WriteSC(char cCommand[15])
+void BORLSW::WriteSC(char cCommand[15])
 {
     QSerialPort serial;
 
@@ -72,7 +72,7 @@ BORLSW::WriteSC(char cCommand[15])
      serial.close();
 }
 
-BORLSW::SwType()
+void BORLSW::SwType()
 {
     QThread::msleep(100);
     string StrComand="type\?\r\n";
@@ -83,7 +83,7 @@ BORLSW::SwType()
     ReadWriteSC(cCommand);
 }
 
-BORLSW::SwFirmware()
+void BORLSW::SwFirmware()
 {
     QThread::msleep(100);
     string StrComand="firmware\?\r\n";
@@ -94,7 +94,7 @@ BORLSW::SwFirmware()
     ReadWriteSC(cCommand);
 }
 
-BORLSW::CurrentChannel()
+void BORLSW::CurrentChannel()
 {
     QThread::msleep(100);
     string StrComand="ch\?\r\n";
@@ -105,7 +105,7 @@ BORLSW::CurrentChannel()
     ReadWriteSC(cCommand);
 }
 
-BORLSW::SetChannel(qint8 ChannelNumb)
+void BORLSW::SetChannel(qint8 ChannelNumb)
 {
     QThread::msleep(100);
     ChannelNum=ChannelNumb;

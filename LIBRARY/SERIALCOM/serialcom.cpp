@@ -9,7 +9,7 @@ SerialCom::SerialCom()
 
 }
 
-SerialCom::SerialFind()
+void SerialCom::SerialFind()
 {
     qint8 Portcount=0;
     const auto infos = QSerialPortInfo::availablePorts();

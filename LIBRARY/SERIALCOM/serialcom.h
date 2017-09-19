@@ -7,7 +7,7 @@ class SerialCom
 public:
 
     SerialCom();
-    SerialFind();
+    void SerialFind();
     QString SerialSet(qint8 iSet);
 
 private:

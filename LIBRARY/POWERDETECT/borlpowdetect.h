@@ -6,11 +6,11 @@ class BORLPOWDETECT
 {
 public:
     BORLPOWDETECT();
-    ObtainPOW();
-    SetCOMPort(QString);
+    void ObtainPOW();
+    void SetCOMPort(QString);
 
 private:
-    ReadWritePOW();
+    void ReadWritePOW();
     QString ComPort;
 };
 
