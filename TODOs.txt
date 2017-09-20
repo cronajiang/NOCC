@@ -1,4 +1,6 @@
 - do the auto port finding for arduino 
 - resolve possible conflicts between comports
+- read feedbacks from all devices for error control
 - encapsulation for classes and modify user interfaces
+think about what is useful for end users, what is not
 - GUI

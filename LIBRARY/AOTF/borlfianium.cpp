@@ -2,7 +2,7 @@
 #include <string>
 #include <windows.h>
 #include <QDebug>
-#include "..\NOCC-PRIVATE\AotfLibrary.h"
+#include "../NOCC_PRIVATE/AotfLibrary.h"
 #include "borlfianium.h"
 
 using namespace std;
