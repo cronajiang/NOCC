@@ -17,7 +17,6 @@ int main(int argc, char *argv[])
 
     SerialCom SERIAL;
     BORLSW SWITCH;
-    BORLPOWDETECT ARDUINO;
     BORLFianium AOTF;
     BORLPOWDETECT powerDet;
     power_recorder *pwRecorder = new power_recorder();
@@ -30,26 +29,24 @@ int main(int argc, char *argv[])
     AOTF.BORLFianiumPower(33.33);  // 0
     AOTF.BORLFianiumCntrl();
 
-   // SERIAL.SerialFind();  // RUN THIS FIRST BEFORE SETCOMPORT
+//     SERIAL.SerialFindDebug();  // RUN THIS FIRST BEFORE SETCOMPORT
 
 
     /* set SWITCH */
     SWITCH.SetChannel(11);
 
-    /* set fiber power meter */
-    powerDet.SetCOMPort(SERIAL.SerialSet(2));
+    /* obtain power before switch */
+     powerDet.ObtainPOW();
 
+//   /* create a folder */
+//    pwRecorder->create_folder("session_1");
+//   // qDebug()<<QDir::currentPath();
 
-
-   /* create a folder */
-    pwRecorder->create_folder("session_1");
-   // qDebug()<<QDir::currentPath();
-
-   /* set recording time */
-   pwRecorder->set_timer_period(1*1000); //period for repetition ms
-   pwRecorder->set_timer_duration(10*1000);
-   //SWITCH.SetChannel(12); // select channel
-   pwRecorder->recording_start();
+//   /* set recording time */
+//   pwRecorder->set_timer_period(1*1000); //period for repetition ms
+//   pwRecorder->set_timer_duration(10*1000);
+//   //SWITCH.SetChannel(12); // select channel
+//   pwRecorder->recording_start();
 
 
     //    for (int i=1; i< 1000; i++)

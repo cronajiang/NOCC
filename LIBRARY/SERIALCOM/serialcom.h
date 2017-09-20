@@ -9,7 +9,7 @@ public:
     SerialCom();
     void SerialFind();
     QString SerialSet(qint8 iSet);
-
+    void SerialFindDebug();
     quint16 productID[5];
     qint8 Portcount;
     QString description[5];

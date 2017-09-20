@@ -59,3 +59,31 @@ QString SerialCom::SerialSet(qint8 iSet)
 */
     return portName[iSet];
 }
+
+
+void SerialCom::SerialFindDebug()
+{
+    Portcount=0;
+    const auto infos = QSerialPortInfo::availablePorts();
+    for (const QSerialPortInfo &info : infos)
+    {
+        Portcount++;
+        description[Portcount] = info.description();
+        manufacturer[Portcount] = info.manufacturer();
+        serialNumber[Portcount] = info.serialNumber();
+        portName[Portcount] = info.portName();
+        productID[Portcount] = info.productIdentifier();
+    }
+
+    for(int i=1;i<Portcount+1;i++)
+    {
+    qDebug()<<"";
+    qDebug()<<"DEVICE "+QString::number(i);
+    qDebug()<<portName[i];
+    qDebug()<<description[i];
+    qDebug()<<manufacturer[i];
+    qDebug()<<serialNumber[i];
+    qDebug()<<productID[i];
+    }
+}
+

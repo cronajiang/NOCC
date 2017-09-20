@@ -1,6 +1,7 @@
 #ifndef BORLPOWDETECT_H
 #define BORLPOWDETECT_H
 
+#include "serialcom.h"
 
 class BORLPOWDETECT
 {
@@ -9,9 +10,17 @@ public:
     void ObtainPOW();
     void SetCOMPort(QString);
 
-private:
+    const quint16 productIDArduino = 67;
+    void AutoSetComPort();
+
+
+    SerialCom *serialcom;
+
     void ReadWritePOW();
     QString ComPort;
+
+private:
+
 };
 
 #endif // BORLPOWDETECT_H

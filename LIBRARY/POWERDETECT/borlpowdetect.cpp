@@ -15,6 +15,7 @@ using namespace std;
 
 BORLPOWDETECT::BORLPOWDETECT()
 {
+    AutoSetComPort();
 }
 
 /*
@@ -66,3 +67,29 @@ void BORLPOWDETECT::ObtainPOW()
     ReadWritePOW();
 }
 
+void BORLPOWDETECT::AutoSetComPort()
+{
+    serialcom = new SerialCom();
+    serialcom->SerialFind();
+    bool IsArduino = 0;
+    quint8 count =  serialcom->Portcount + 1;
+    for (int i =1; i<count;i++)
+    {
+        if(productIDArduino == serialcom->productID[i])
+        {
+            IsArduino = 1;
+            ComPort = serialcom->portName[i];
+             qDebug()<<"";
+             qDebug()<< "DEVICE " + QString::number(i)+ " is power meter";
+//             qDebug()<<"DEVICE "+QString::number(i);
+             qDebug()<<serialcom->portName[i];
+             qDebug()<<serialcom->description[i];
+             qDebug()<<serialcom->manufacturer[i];
+             qDebug()<<serialcom->serialNumber[i];
+             qDebug()<<serialcom->productID[i];
+        }
+
+    }
+    if (IsArduino == 0)
+        qDebug() << "no arduino found, please check com port connection";
+}

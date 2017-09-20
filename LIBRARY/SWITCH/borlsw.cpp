@@ -124,7 +124,7 @@ void BORLSW::AutoSetComPort()
     serialcom = new SerialCom();
     serialcom->SerialFind();
     bool IsSwitch = 0;
-    for (int i =1; i<serialcom->Portcount;i++)
+    for (int i =1; i<serialcom->Portcount+1;i++)
     {
         if(productIDswitch == serialcom->productID[i])
         {
