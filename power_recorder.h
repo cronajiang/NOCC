@@ -15,7 +15,7 @@ public:
     QTime time;
     int startingTime;
 
-    void create_folder();
+    void create_folder(QString);
     void recording_start();
     void recording_end();
     void set_filename();
@@ -23,7 +23,8 @@ public:
     void set_timer_duration(quint16);
 
     BORLPOWDETECT powerDet;
-     qint16 voltage;
+    qint16 voltage;
+    QString folderName;
 
 public slots:
     void MySlot();

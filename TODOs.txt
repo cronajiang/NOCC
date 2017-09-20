@@ -1,3 +1,4 @@
-1. resolve possible conflicts between comports
-2. encapsulation for classes and modify user interfaces
-3. GUI
+- do the auto port finding for arduino 
+- resolve possible conflicts between comports
+- encapsulation for classes and modify user interfaces
+- GUI

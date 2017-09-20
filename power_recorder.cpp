@@ -23,7 +23,7 @@ void power_recorder::MySlot()
 
 void power_recorder::set_filename()
 {
-    file_name = QDate::currentDate().toString("'data_'yyyy_MM_dd_'") +
+    file_name = folderName+"/"+ QDate::currentDate().toString("'data_'yyyy_MM_dd_'") +
             QTime::currentTime().toString("hhmmss")+".txt";
    // qDebug()<<file_name;
 }
@@ -93,8 +93,13 @@ void power_recorder::recording_start()
 
 }
 
-void power_recorder::create_folder() // create a folder under current dir
+void power_recorder::create_folder(QString folder_name) // create a folder under current dir
 {
+    folderName = folder_name;
+    if(QDir(folder_name).exists())
+        qDebug() << "Error, this folder exists, please rename your folder";
+    else
+        QDir().mkdir(folder_name);
 
 }
 

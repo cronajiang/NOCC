@@ -20,61 +20,46 @@ int main(int argc, char *argv[])
     BORLPOWDETECT ARDUINO;
     BORLFianium AOTF;
     BORLPOWDETECT powerDet;
+    power_recorder *pwRecorder = new power_recorder();
+
+    /* set laser and AOTF */
+    AOTF.BORLFianiumChannel(0);
+    AOTF.BORLFianiumFunctn(1);//EXECUTION
+
+    AOTF.BORLFianiumWavelength(650); // 0
+    AOTF.BORLFianiumPower(33.33);  // 0
+    AOTF.BORLFianiumCntrl();
+
+   // SERIAL.SerialFind();  // RUN THIS FIRST BEFORE SETCOMPORT
 
 
-    SERIAL.SerialFind();  // RUN THIS FIRST BEFORE SETCOMPORT
-
-
-//    SWITCH.SetCOMPort(SERIAL.SerialSet(1));// DEVICE ID
-//    SWITCH.SetCOMPort();// DEVICE ID
-
+    /* set SWITCH */
     SWITCH.SetChannel(11);
 
+    /* set fiber power meter */
     powerDet.SetCOMPort(SERIAL.SerialSet(2));
 
-    powerDet.ObtainPOW();
-
-     AOTF.BORLFianiumChannel(0);
-     AOTF.BORLFianiumFunctn(1);//EXECUTION
-
-     AOTF.BORLFianiumWavelength(650); // 0
-     AOTF.BORLFianiumPower(33.33);  // 0
-     AOTF.BORLFianiumCntrl();
-
-//    ARDUINO.SetCOMPort(SERIAL.SerialSet(1));
 
 
-//    for (int i=1; i< 1000; i++)
-//    {  powerDet.ObtainPOW();
-//       QThread::msleep(200);}
-   // create a folder
+   /* create a folder */
+    pwRecorder->create_folder("session_1");
    // qDebug()<<QDir::currentPath();
-   // create a file
-   // set recording time
+
+   /* set recording time */
+   pwRecorder->set_timer_period(1*1000); //period for repetition ms
+   pwRecorder->set_timer_duration(10*1000);
+   //SWITCH.SetChannel(12); // select channel
+   pwRecorder->recording_start();
 
 
-//   power_recorder *pwRecorder = new power_recorder();
-//   pwRecorder->set_timer_period(1*1000); //period for repetition ms
-//   pwRecorder->set_timer_duration(10*1000);
-//   //SWITCH.SetChannel(12); // select channel
-//   pwRecorder->recording_start();
+    //    for (int i=1; i< 1000; i++)
+    //    {  powerDet.ObtainPOW();
+    //       QThread::msleep(200);}  //debug for powerDet
 
 
 //    Z.CurrentChannel();
 //    Z.SwFirmware();
 //    Z.SwType();
 //  Z.SetChannel(12);
-
-
-
-
-
-
-
-
-
-
-
-
     return a.exec();
 }
