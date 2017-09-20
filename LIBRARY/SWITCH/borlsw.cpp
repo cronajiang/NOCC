@@ -1,19 +1,12 @@
-#include <QtGlobal>
-#include <cmath>
-#include <string>
-#include <windows.h>
-#include <QtSerialPort/QSerialPort>
-#include <QtSerialPort/QSerialPortInfo>
-#include <QString>
-#include <QtDebug>
-#include <QThread>
-#include "serialcom.h"
 #include "borlsw.h"
 
 using namespace std;
 
 BORLSW::BORLSW()
 {
+
+    AutoSetComPort();
+
 }
 
 /*
@@ -24,9 +17,12 @@ BORLSW::BORLSW()
 
 void BORLSW::SetCOMPort(QString portName)
 {
+
     ComPort=portName;
     qDebug()<<ComPort;
 }
+
+
 
 void BORLSW::ReadWriteSC(char cCommand[15])
 {
@@ -58,6 +54,7 @@ void BORLSW::WriteSC(char cCommand[15])
 
     serial.setPortName(ComPort);
     serial.setBaudRate(57600);
+
     serial.setDataBits(QSerialPort::Data8);
     serial.setParity(QSerialPort::NoParity);
     serial.setStopBits(QSerialPort::OneStop);
@@ -117,7 +114,36 @@ void BORLSW::SetChannel(qint8 ChannelNumb)
     WriteSC(cCommand);
 }
 
+//quint16 BORLSW::getID()
+//{
+//    return productIDswitch;
+//}
 
+void BORLSW::AutoSetComPort()
+{
+    serialcom = new SerialCom();
+    serialcom->SerialFind();
+    bool IsSwitch = 0;
+    for (int i =1; i<serialcom->Portcount;i++)
+    {
+        if(productIDswitch == serialcom->productID[i])
+        {
+            IsSwitch = 1;
+            ComPort = serialcom->portName[i];
+             qDebug()<<"";
+             qDebug()<< "DEVICE " + QString::number(i)+ " is SWITCH";
+//             qDebug()<<"DEVICE "+QString::number(i);
+             qDebug()<<serialcom->portName[i];
+             qDebug()<<serialcom->description[i];
+             qDebug()<<serialcom->manufacturer[i];
+             qDebug()<<serialcom->serialNumber[i];
+             qDebug()<<serialcom->productID[i];
+        }
+
+    }
+    if (IsSwitch == 0)
+        qDebug() << "no swtich found, please check com port connection";
+}
 
 
 

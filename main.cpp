@@ -26,7 +26,9 @@ int main(int argc, char *argv[])
 
 
 //    SWITCH.SetCOMPort(SERIAL.SerialSet(1));// DEVICE ID
-//    SWITCH.SetChannel(11);
+//    SWITCH.SetCOMPort();// DEVICE ID
+
+    SWITCH.SetChannel(11);
 
     powerDet.SetCOMPort(SERIAL.SerialSet(2));
 
@@ -49,11 +51,13 @@ int main(int argc, char *argv[])
    // qDebug()<<QDir::currentPath();
    // create a file
    // set recording time
-   power_recorder *pwRecorder = new power_recorder();
-   pwRecorder->set_timer_period(1*1000); //period for repetition ms
-   pwRecorder->set_timer_duration(10*1000);
-   //SWITCH.SetChannel(12); // select channel
-   pwRecorder->recording_start();
+
+
+//   power_recorder *pwRecorder = new power_recorder();
+//   pwRecorder->set_timer_period(1*1000); //period for repetition ms
+//   pwRecorder->set_timer_duration(10*1000);
+//   //SWITCH.SetChannel(12); // select channel
+//   pwRecorder->recording_start();
 
 
 //    Z.CurrentChannel();

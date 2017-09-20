@@ -1,6 +1,5 @@
 #include <QtSerialPort/QSerialPort>
 #include <QtSerialPort/QSerialPortInfo>
-#include <QString>
 #include <QtDebug>
 #include "serialcom.h"
 
@@ -11,7 +10,7 @@ SerialCom::SerialCom()
 
 void SerialCom::SerialFind()
 {
-    qint8 Portcount=0;
+    Portcount=0;
     const auto infos = QSerialPortInfo::availablePorts();
     for (const QSerialPortInfo &info : infos)
     {
@@ -20,17 +19,19 @@ void SerialCom::SerialFind()
         manufacturer[Portcount] = info.manufacturer();
         serialNumber[Portcount] = info.serialNumber();
         portName[Portcount] = info.portName();
+        productID[Portcount] = info.productIdentifier();
     }
 
-    for(int i=1;i<Portcount+1;i++)
-    {
-    qDebug()<<"";
-    qDebug()<<"DEVICE "+QString::number(i);
-    qDebug()<<portName[i];
-    qDebug()<<description[i];
-    qDebug()<<manufacturer[i];
-    qDebug()<<serialNumber[i];
-    }
+//    for(int i=1;i<Portcount+1;i++)
+//    {
+//    qDebug()<<"";
+//    qDebug()<<"DEVICE "+QString::number(i);
+//    qDebug()<<portName[i];
+//    qDebug()<<description[i];
+//    qDebug()<<manufacturer[i];
+//    qDebug()<<serialNumber[i];
+//    qDebug()<<productID[i];
+//    }
 }
 
 
