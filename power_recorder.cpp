@@ -13,7 +13,7 @@ power_recorder::power_recorder()
 
 void power_recorder::MySlot()
 {
-    qDebug() << "Timer executed";
+//    qDebug() << "Timer executed";
     if (time.elapsed() >= timer_duration)
         timer->stop();
     else
@@ -30,7 +30,8 @@ void power_recorder::set_filename()
 
 void power_recorder::get_voltage_fromArduino()
 {
-    voltage = 1;// debug
+    powerDet.ObtainPOW();
+    voltage = powerDet.voltage;// debug
 
 }
 
@@ -39,13 +40,18 @@ void power_recorder::get_voltage_fromArduino()
 void power_recorder::write_to_file()
 {
 
+
     QFile file(file_name);
 
+      get_voltage_fromArduino();
     if (file.open(QIODevice::WriteOnly | QIODevice::Append))
     {
+
+
         QTextStream stream(&file);
-        qint32 voltage;
-        voltage = 1;
+//        qint32 voltage;
+//        voltage = 1;
+
         stream << QTime::currentTime().toString("hhmmss");
         stream << ',';
         stream << voltage;
@@ -55,7 +61,7 @@ void power_recorder::write_to_file()
 
         stream.flush();
         file.close();
-        qDebug()     << "File Written";
+//        qDebug()     << "File Written";
     }
 
 }

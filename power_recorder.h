@@ -22,8 +22,10 @@ public:
     void set_timer_period(quint16);
     void set_timer_duration(quint16);
 
-     qint16 voltage;
+    QByteArray voltage;
     QString folderName;
+
+    BORLPOWDETECT powerDet;
 
 public slots:
     void MySlot();

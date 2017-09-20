@@ -39,14 +39,14 @@ int main(int argc, char *argv[])
 //     powerDet.ObtainPOW();
 
 //   /* create a folder */
-//    pwRecorder->create_folder("session_1");
+    pwRecorder->create_folder("session_2");
 //   // qDebug()<<QDir::currentPath();
 
 //   /* set recording time */
-//   pwRecorder->set_timer_period(1*1000); //period for repetition ms
-//   pwRecorder->set_timer_duration(10*1000);
-//   //SWITCH.SetChannel(12); // select channel
-//   pwRecorder->recording_start();
+   pwRecorder->set_timer_period(1*1000); //period for repetition ms
+   pwRecorder->set_timer_duration(10*1000);
+   //SWITCH.SetChannel(12); // select channel
+   pwRecorder->recording_start();
 
 
 //        for (int i=1; i< 50; i++)
