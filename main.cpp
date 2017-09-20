@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
     SerialCom SERIAL;
     BORLSW SWITCH;
     BORLFianium AOTF;
-    BORLPOWDETECT powerDet;
+//    BORLPOWDETECT powerDet;
     power_recorder *pwRecorder = new power_recorder();
 
     /* set laser and AOTF */
@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
     SWITCH.SetChannel(11);
 
     /* obtain power before switch */
-     powerDet.ObtainPOW();
+//     powerDet.ObtainPOW();
 
 //   /* create a folder */
 //    pwRecorder->create_folder("session_1");
@@ -49,9 +49,9 @@ int main(int argc, char *argv[])
 //   pwRecorder->recording_start();
 
 
-    //    for (int i=1; i< 1000; i++)
-    //    {  powerDet.ObtainPOW();
-    //       QThread::msleep(200);}  //debug for powerDet
+//        for (int i=1; i< 50; i++)
+//        {  powerDet.ObtainPOW();
+//           QThread::msleep(200);}  //debug for powerDet
 
 
 //    Z.CurrentChannel();

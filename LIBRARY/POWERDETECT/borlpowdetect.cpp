@@ -51,7 +51,12 @@ void BORLPOWDETECT::ReadWritePOW()
         QThread::msleep(200);
         serial.waitForReadyRead(1000);
         QByteArray data=serial.readAll();
-         qDebug()<<data;
+        quint8 str_len = data.size();
+         data.remove(str_len - 2,2);
+         voltage = data;
+//         qDebug()<<voltage;
+
+//         qDebug()<<QString::number(voltage);
 
     }
     else

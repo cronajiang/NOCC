@@ -16,11 +16,12 @@ public:
 
     SerialCom *serialcom;
 
-    void ReadWritePOW();
+
     QString ComPort;
 
+    QByteArray voltage;
 private:
-
+    void ReadWritePOW();
 };
 
 #endif // BORLPOWDETECT_H
