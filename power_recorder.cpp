@@ -35,6 +35,8 @@ void power_recorder::MyTask()
             idxCurr ++;
             if (idxCurr<numOrder)
                  recording_start();
+            else
+                qDebug()<<"Done!";
         }
     }
 

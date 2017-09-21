@@ -61,7 +61,7 @@ int main(int argc, char *argv[])
     swChannelOrder[3] = 5;
     swChannelOrder[4] = 11;
     swChannelOrder[5] = 12;
-    swChannelOrder[0] = 11;
+    swChannelOrder[6] = 11;
 
 //    {11 , 12,  11};
 //    "",8, 11,  5, 11, 1,11];
